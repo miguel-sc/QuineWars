@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+      content="width=device-width,
+      initial-scale=1, shrink-to-fit=no">
+    <title>Quine Wars</title>
+  </head>
+  <body>
+    <p class="intro">
+      A long time ago
+      in a self-replicating
+      HTML file far, far
+      away&hellip;
+    </p>
+    <h1>QUINE WARS</h1>
+    <canvas id="sky"></canvas>
+    <div class="content-wrapper">
+      <div class="html-content">
+        <p class="episode-title">
+          EPISODE IV
+          <br/>
+          THE SOURCE CODE
+        </p>
+        <style type="text/css">
+
+          * {
+            position: fixed;
+            padding: 0;
+            margin: 0;
+          }
+
+          /* make everything inside the style
+          and script tag visible */
+          style, script {
+            position: relative;
+            white-space: pre;
+            display: block;
+          }
+
+          /* add rest of HTML file before and
+          after the style and script tag */
+          style:before {
+            content:
+            "<!DOCTYPE html>\A"
+            "<html lang=\22 en\22>\A"
+            "  <head>\A"
+            "    <meta charset="
+            "\22UTF-8\22/>\A"
+            "    <meta name=\22viewport\22\A"
+            "      content="
+            "\22width=device-width,\A"
+            "      initial-scale=1, "
+            "shrink-to-fit=no\22>\A"
+            "    <title>Quine Wars</title>\A"
+            "  </head>\A"
+            "  <body>\A"
+            "    <p class=\22intro\22>\A"
+            "      A long time ago\A"
+            "      in a self-replicating\A"
+            "      HTML file far, far\A"
+            "      away&hellip;\A"
+            "    </p>\A"
+            "    <h1>QUINE WARS</h1>\A"
+            "    <canvas id=\22sky\22>"
+            "</canvas>\A"
+            "    <div class="
+            "\22 content-wrapper\22>\A"
+            "      <div class="
+            "\22 html-content\22>\A"
+            "        <p class="
+            "\22 episode-title\22>\A"
+            "          EPISODE IV\A"
+            "          <br/>\A"
+            "          THE SOURCE CODE\A"
+            "        </p>\A"
+            "        <style type="
+            "\22text/css\22>";
+          }
+
+          style:after {
+            content:
+            "<""/style>\A"
+            "        <script>";
+          }
+
+          script:after {
+            content:
+            "</script>\A"
+            "      </div>\A"
+            "    </div>\A"
+            "  </body>\A"
+            "</html>";
+          }
+
+          /* add science fiction styling */
+          html, body {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, Verdana,
+              Helvetica, sans-serif;
+            font-weight: 700;
+            color: #ff6;
+            background-color: #000;
+          }
+
+          .intro {
+            top: 50%;
+            left: 50%;
+            padding: 20px;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            max-width: 16em;
+            font-size: 200%;
+            font-weight: 400;
+            color: #4ee;
+            opacity: 0;
+            z-index: 1;
+            animation: intro 4s ease-out;
+          }
+
+          @keyframes intro {
+            0% { opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { opacity: 0; }
+          }
+
+          h1 {
+            font-family: "Courier New",
+              Courier, monospace;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%)
+              scale(1);
+            width: 3em;
+            text-align: center;
+            font-size: 10em;
+            line-height: 0.8em;
+            letter-spacing: -0.05em;
+            color: #000;
+            text-shadow:
+              -7px -7px 0 #ff6,
+              7px -7px 0 #ff6,
+              -7px 7px 0 #ff6,
+              7px 7px 0 #ff6;
+            opacity: 0;
+            z-index: 1;
+            animation: title 5s ease-out 5s;
+          }
+
+          @keyframes title {
+            0% {
+              transform: translate(-50%, -50%)
+                scale(1);
+              opacity: 1;
+            }
+            50% {
+              opacity: 1;
+            }
+            100% {
+              transform: translate(-50%, -50%)
+                scale(0.1);
+              opacity: 0;
+            }
+          }
+
+          .content-wrapper {
+            width: 20em;
+            height: 50em;
+            bottom: 0;
+            left: 50%;
+            margin-left: -10em;
+            font-size: 350%;
+            text-align: justify;
+            overflow: hidden;
+            transform-origin: 50% 100%;
+            transform: perspective(300px)
+              rotateX(25deg);
+          }
+
+          .content-wrapper:after {
+            position: fixed;
+            content: ' ';
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 60%;
+            background:
+              linear-gradient(
+                rgba(0,0,0,1),
+                rgba(0,0,0,0)
+              );
+            pointer-events: none;
+          }
+
+          .html-content {
+            top: 100%;
+            animation: scroll 400s linear 9s;
+          }
+
+          @keyframes scroll {
+            0% { top: 100%; }
+            100% { top: -1000%; }
+          }
+
+          .episode-title {
+            position: relative;
+            text-align: center;
+            margin-bottom: 50px;
+          }
+
+          br {
+            position: relative;
+          }
+
+        </style>
+        <script>
+
+          /* draw night sky with stars */
+          function drawing() {
+            var c =
+              document.getElementById("sky")
+            var ctx = c.getContext("2d")
+            var xMax = c.width =
+              window.innerWidth
+            var yMax = c.height =
+              window.innerHeight
+
+            var hmTimes =
+              Math.round(xMax + yMax)
+
+            for(var i=0; i<=hmTimes; i++) {
+              var randomX = Math.floor(
+                (Math.random()*xMax)+1
+              )
+              var randomY = Math.floor(
+                (Math.random()*yMax)+1
+              )
+              var randomSize = Math.floor(
+                (Math.random()*2)+1
+              )
+              var opacityOne = Math.floor(
+                (Math.random()*9)+1
+              )
+              var opacityTwo = Math.floor(
+                (Math.random()*9)+1
+              )
+              var randomHue = Math.floor(
+                (Math.random()*360)+1
+              )
+              ctx.fillStyle = "hsla(" +
+                randomHue + ", 30%, 80%, ." +
+                opacityOne + opacityTwo + ")"
+              ctx.fillRect(
+                randomX,
+                randomY,
+                randomSize,
+                randomSize
+              )
+            }
+          }
+          drawing()
+
+          /* visit the repository on
+          github.com/miguel-sc/QuineWars
+          for more information ... */
+
+        </script>
+      </div>
+    </div>
+  </body>
+</html>
